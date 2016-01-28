@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".c_Conversation.View_Activity_Conversation"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/conv_RV"
+        android:scrollbars="vertical"
+        android:layout_above="@+id/conv_divider"
+        android:padding="0dip"
+        app:stackFromEnd="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:id="@+id/conv_divider"
+        android:background="@color/off_white"
+        android:layout_above="@+id/conv_Rel_textbox"/>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:id="@+id/conv_Rel_textbox"
+        android:paddingLeft="10dp"
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="-4dp"
+            android:id="@+id/conv_Rel_ET"
+            android:hint="@string/message_hint"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="10dp"
+            android:layout_alignTop="@+id/conv_Rel_Btn"
+            android:background="@android:color/white"
+            android:layout_alignBottom="@+id/conv_Rel_Btn"
+            android:layout_toLeftOf="@+id/conv_Rel_Btn"/>
+        
+        <Button
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:id="@+id/conv_Rel_Btn"
+            android:layout_alignParentRight="true"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_send"/>
+
+    </RelativeLayout>
+    
+
+</RelativeLayout>
