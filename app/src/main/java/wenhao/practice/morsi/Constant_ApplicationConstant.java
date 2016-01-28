@@ -5,7 +5,7 @@ package wenhao.practice.morsi;
  */
 public class Constant_ApplicationConstant {
     public final static String FirebaseURL=
-            "https://glaring-fire-252.firebaseIO.com";
+            "a";
 
 
 }
