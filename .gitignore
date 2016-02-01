@@ -6,4 +6,4 @@
 .DS_Store
 /build
 /captures
-./src/main/java/wenhao/practice/morsi/Constant_ApplicationConstant.java
+/src/main/java/wenhao/practice/morsi/Constant_ApplicationConstant.java

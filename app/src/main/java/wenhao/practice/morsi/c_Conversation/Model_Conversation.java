@@ -110,49 +110,6 @@ public class Model_Conversation {
         fromRef.addChildEventListener(mListener);
         toRef.addChildEventListener(mListener1);
 
-        /*
-        toRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Object_msg msg;
-                Long ts;
-                String content;
-                for (DataSnapshot data : dataSnapshot.getChildren()){
-                    ts = Long.valueOf(data.getKey());
-                    content = String.valueOf(data.getValue());
-                    msg = new Object_msg(ts, content, DIRECTION_OUTGOING);
-                    msgList.add(msg);
-                }
-
-                fromRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Object_msg msg;
-                        Long ts;
-                        String content;
-                        for (DataSnapshot data : dataSnapshot.getChildren()){
-                            ts = Long.valueOf(data.getKey());
-                            content = String.valueOf(data.getValue());
-                            msg = new Object_msg(ts, content, DIRECTION_INCOMING);
-                            msgList.add(msg);
-                        }
-                        cb.onSuccess(msgList);
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        cb.onFail(firebaseError);
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                cb.onFail(firebaseError);
-            }
-        });
-        */
-
     }
 
     public void cleanup(){

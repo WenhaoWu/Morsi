@@ -1,38 +1,26 @@
-package wenhao.practice.morsi.b_UserList;
+package wenhao.practice.morsi.b_UserAndGroup;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.util.ArrayList;
-
-import wenhao.practice.morsi.Constant_ApplicationConstant;
-import wenhao.practice.morsi.Obj_Usr;
 import wenhao.practice.morsi.R;
 import wenhao.practice.morsi.a_loginAndRegi.Activity_Login;
 
-public class Activity_AllUserList extends AppCompatActivity
+public class View_ug_activity_main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String TAG_UID = "tag_UID";
@@ -40,13 +28,12 @@ public class Activity_AllUserList extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private View mUsrListProgress;
 
     private boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_list_activity_userlist);
+        setContentView(R.layout.ug_main_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,78 +52,27 @@ public class Activity_AllUserList extends AppCompatActivity
             self_uid = getIntent().getStringExtra(TAG_UID);
         }
 
-        mUsrListProgress = findViewById(R.id.usrList_progress);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.RV_UserList);
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
+        /*
         getUsrList(self_uid,new usrListCallback() {
             @Override
-            public void onSuccess(ArrayList<Obj_Usr> usrs, String self_name) {
-                mAdapter = new Adapter_UsrListAdapter(usrs,getBaseContext(), self_name);
+            public void onSuccess(ArrayList<Object_User> usrs, String self_name) {
+                mAdapter = new View_list_adapter(usrs,getBaseContext(), self_name);
                 mRecyclerView.setAdapter(mAdapter);
             }
         });
-    }
+        */
 
+        View_ug_adapter_viewpager viewpagerAdapter = new View_ug_adapter_viewpager(getSupportFragmentManager());
 
+        ViewPager vp = (ViewPager)findViewById(R.id.UG_viewpager);
+        vp.setOffscreenPageLimit(viewpagerAdapter.getCount() - 1);
+        vp.setAdapter(viewpagerAdapter);
 
-    private interface usrListCallback{
-        void onSuccess(ArrayList<Obj_Usr> usrList, String self_name);
-    }
-
-    public void getUsrList(final String self_uid, final usrListCallback callback) {
-        showProgress(true);
-
-        Firebase usrListRef = new Firebase(Constant_ApplicationConstant.FirebaseURL+"/users");
-        usrListRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("UsrCount", dataSnapshot.getChildrenCount() + "");
-                ArrayList<Obj_Usr> usrs = new ArrayList<Obj_Usr>();
-                String self_name = null;
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Log.e("usr", data.getValue().toString());
-                    Obj_Usr usr = data.getValue(Obj_Usr.class);
-                    if (data.getKey().equals(self_uid)){
-                        self_name = usr.getUserName();
-                    }
-                    else {
-                        usrs.add(usr);
-                    }
-
-                }
-                callback.onSuccess(usrs,self_name);
-
-                showProgress(false);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Toast.makeText(getBaseContext(),"Can't get the user list",Toast.LENGTH_SHORT).show();
-                Log.e("UsrListErr", firebaseError.toString());
-                showProgress(false);
-            }
-        });
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.UG_tab);
+        tabLayout.setupWithViewPager(vp);
 
     }
 
-    private void showProgress(final boolean show) {
-
-        int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-        mUsrListProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-        mUsrListProgress.animate().setDuration(shortAnimTime).alpha(
-                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                mUsrListProgress.setVisibility(show ? View.VISIBLE : View.GONE);
-            }
-        });
-    }
 
 
     @Override

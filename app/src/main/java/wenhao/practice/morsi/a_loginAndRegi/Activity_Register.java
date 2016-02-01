@@ -19,9 +19,9 @@ import java.util.Map;
 import java.util.Random;
 
 import wenhao.practice.morsi.Constant_ApplicationConstant;
-import wenhao.practice.morsi.Obj_Usr;
+import wenhao.practice.morsi.b_UserAndGroup.Object_User;
 import wenhao.practice.morsi.R;
-import wenhao.practice.morsi.b_UserList.Activity_AllUserList;
+import wenhao.practice.morsi.b_UserAndGroup.View_ug_activity_main;
 
 public class Activity_Register extends AppCompatActivity {
 
@@ -116,7 +116,7 @@ public class Activity_Register extends AppCompatActivity {
                     Firebase userRef = ref.child("users").child(stringObjectMap.get("uid").toString());
                     final Random rand = new Random();
                     int idx = rand.nextInt(9)+1;
-                    Obj_Usr regiUsr = new Obj_Usr(userName, String.valueOf(idx));
+                    Object_User regiUsr = new Object_User(userName, String.valueOf(idx));
                     userRef.setValue(regiUsr);
                     goToUserList(stringObjectMap.get("uid").toString());
                 }
@@ -134,8 +134,8 @@ public class Activity_Register extends AppCompatActivity {
 
     private void goToUserList(String uid) {
         Intent intent = new Intent();
-        intent.putExtra(Activity_AllUserList.TAG_UID, uid);
-        intent.setClass(getBaseContext(),Activity_AllUserList.class);
+        intent.putExtra(View_ug_activity_main.TAG_UID, uid);
+        intent.setClass(getBaseContext(),View_ug_activity_main.class);
         startActivity(intent);
     }
 

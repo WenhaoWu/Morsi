@@ -1,4 +1,4 @@
-package wenhao.practice.morsi.b_UserList;
+package wenhao.practice.morsi.b_UserAndGroup;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,23 +12,38 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import wenhao.practice.morsi.Obj_Usr;
 import wenhao.practice.morsi.R;
 import wenhao.practice.morsi.c_Conversation.View_Activity_Conversation;
 
 /**
  * Created by wenhaowu on 18/01/16.
  */
-public class Adapter_UsrListAdapter extends RecyclerView.Adapter<Adapter_UsrListAdapter.mViewHolder>{
+public class View_list_adapter extends RecyclerView.Adapter<View_list_adapter.mViewHolder>{
 
-    private ArrayList<Obj_Usr> usrList;
+    private ArrayList<Object_User> usrList;
     private Context mContext;
     private String self_name;
 
-    public Adapter_UsrListAdapter(ArrayList<Obj_Usr> usrList, Context mContext, String self_name) {
+    public View_list_adapter(ArrayList<Object_User> usrList, Context mContext, String self_name) {
         this.usrList = usrList;
         this.mContext = mContext;
         this.self_name = self_name;
+    }
+
+    public View_list_adapter( Context mContext) {
+        this.usrList = new ArrayList<>();
+        this.self_name = null;
+        this.mContext = mContext;
+    }
+
+    public void setUsrList(ArrayList<Object_User> usrList) {
+        this.usrList = usrList;
+        notifyDataSetChanged();
+    }
+
+    public void setSelf_name(String self_name) {
+        this.self_name = self_name;
+        notifyDataSetChanged();
     }
 
     public static class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -58,7 +73,7 @@ public class Adapter_UsrListAdapter extends RecyclerView.Adapter<Adapter_UsrList
 
     @Override
     public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list_layout_rv_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.ug_layout_rv_item, parent, false);
         mViewHolder vh = new mViewHolder(v, new mViewHolder.IMyViewHolderClicks() {
             @Override
             public void onSelect(View caller, int position) {

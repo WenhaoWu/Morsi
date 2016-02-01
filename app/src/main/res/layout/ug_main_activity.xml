@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/user_list_activity_app_bar_"
+        layout="@layout/ug_activity_app_bar_"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/user_list_activity_nav_header"
+        app:headerLayout="@layout/ug_activity_nav_header"
         app:menu="@menu/activity_activity__all_user_list_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
