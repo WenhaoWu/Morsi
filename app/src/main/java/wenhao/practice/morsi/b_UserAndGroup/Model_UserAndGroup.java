@@ -29,7 +29,7 @@ public class Model_UserAndGroup {
     }
 
     public interface usrListCallback{
-        void onSuccess(ArrayList<Object_User> usrList, String self_name);
+        void onSuccess(ArrayList<Object_User> usrList, String self_name, String self_avatar);
         void onFail(FirebaseError error);
     }
 
@@ -43,12 +43,13 @@ public class Model_UserAndGroup {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("UsrCount", dataSnapshot.getChildrenCount() + "");
                 ArrayList<Object_User> usrs = new ArrayList<Object_User>();
-                String self_name = null;
+                String self_name = null, self_avatar=null;
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Log.e("usr", data.getValue().toString());
                     Object_User usr = data.getValue(Object_User.class);
                     if (data.getKey().equals(self_uid)){
                         self_name = usr.getUserName();
+                        self_avatar = usr.getUserAvatar();
                     }
                     else {
                         usrs.add(usr);
@@ -56,7 +57,7 @@ public class Model_UserAndGroup {
 
                 }
 
-                callback.onSuccess(usrs,self_name);
+                callback.onSuccess(usrs,self_name, self_avatar);
 
                 pd.dismiss();
             }

@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.FirebaseError;
@@ -97,8 +99,17 @@ public class View_fragment extends android.support.v4.app.Fragment{
         Toast.makeText(getContext(), mError.getMessage(), Toast.LENGTH_LONG).show();
     }
 
-    public void onItemNext(ArrayList<Object_User> users, String self_name) {
+    public void onItemNext(ArrayList<Object_User> users, String self_name ,String self_avatar) {
         adapter.setSelf_name(self_name);
         adapter.setUsrList(users);
+
+
+        TextView nav_tv = (TextView)getActivity().findViewById(R.id.nav_header_title);
+        nav_tv.setText(self_name);
+
+        ImageView nav_img = (ImageView)getActivity().findViewById(R.id.nav_header_img);
+        String uri = "drawable/"+"avatar"+self_avatar;
+        int imageRes = getContext().getResources().getIdentifier(uri,null,getContext().getPackageName());
+        nav_img.setImageResource(imageRes);
     }
 }

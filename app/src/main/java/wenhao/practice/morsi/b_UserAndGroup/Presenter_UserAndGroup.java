@@ -1,6 +1,7 @@
 package wenhao.practice.morsi.b_UserAndGroup;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.firebase.client.FirebaseError;
 
@@ -11,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Presenter_UserAndGroup {
     private String self_uid;
-    private String own_name;
 
     private ArrayList<Object_User> users = new ArrayList<>();
     private FirebaseError mError = null;
@@ -28,28 +28,27 @@ public class Presenter_UserAndGroup {
 
         model.getUsrList(self_uid, new Model_UserAndGroup.usrListCallback() {
             @Override
-            public void onSuccess(ArrayList<Object_User> usrList, String self_name) {
+            public void onSuccess(ArrayList<Object_User> usrList, String self_name, String self_avatar) {
                 users = usrList;
-                own_name = self_name;
-                publish();
+                publish(self_name,self_avatar);
             }
 
             @Override
             public void onFail(FirebaseError error) {
                 mError = error;
-                publish();
+                publish("try",null);
             }
         });
     }
 
     public void onTakeView(View_fragment view){
         this.view = view;
-        publish();
     }
 
-    private void publish() {
+    private void publish(String own_name, String own_avatar) {
+        Log.e("Selfname123", own_name);
         if (view != null){
-            view.onItemNext(users,own_name );
+            view.onItemNext(users, own_name, own_avatar);
         }
         else if(mError != null){
             view.onItemErr(mError);
