@@ -5,7 +5,7 @@ package my.awesome.morsi;
  */
 public class Constant_ApplicationConstant {
     public final static String FirebaseURL=
-            "https://glaring-fire-252.firebaseIO.com";
+            "YOUR_FIREBASE_ROOT_REF";
 
 
 }
