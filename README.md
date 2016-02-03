@@ -2,4 +2,4 @@
 Instant Message powered by Firebase.
 
 #Demo
-![Sign in]("https://raw.githubusercontent.com/WenhaoWu/Morsi/master/demo_pic/signin.png", sign in)
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
