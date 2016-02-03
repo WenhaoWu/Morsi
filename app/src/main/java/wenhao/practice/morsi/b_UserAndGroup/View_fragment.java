@@ -23,7 +23,7 @@ import wenhao.practice.morsi.R;
 /**
  * Created by wenhaowu on 01/02/16.
  */
-public class View_list_fragment extends android.support.v4.app.Fragment{
+public class View_fragment extends android.support.v4.app.Fragment{
 
     private final static String ARG_IDX = "Tab_Idx";
     private final static String ARG_UID = "Self_UID";
@@ -32,18 +32,17 @@ public class View_list_fragment extends android.support.v4.app.Fragment{
 
     private RecyclerView rv;
     private RecyclerView.LayoutManager mLayoutManager;
-    private View_list_adapter adapter;
+    private View_fragment_list_adapter adapter;
 
-    public View_list_fragment() {
+    public View_fragment() {
     }
 
     public static Fragment newInstance(int id, String self_uid) {
-        View_list_fragment fragment = new View_list_fragment();
+        View_fragment fragment = new View_fragment();
 
         Bundle args = new Bundle();
         args.putInt(ARG_IDX, id);
         args.putString(ARG_UID, self_uid);
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,7 +68,7 @@ public class View_list_fragment extends android.support.v4.app.Fragment{
         //deal with rv
         rv.setHasFixedSize(true);
 
-        adapter = new View_list_adapter(getContext());
+        adapter = new View_fragment_list_adapter(getContext());
         switch (getArguments().getInt(ARG_IDX)){
             case 0:
                 mLayoutManager = new LinearLayoutManager(getContext());
@@ -88,8 +87,6 @@ public class View_list_fragment extends android.support.v4.app.Fragment{
 
         rv.setLayoutManager(mLayoutManager);
         rv.setAdapter(adapter);
-
-
 
 
         return myView;

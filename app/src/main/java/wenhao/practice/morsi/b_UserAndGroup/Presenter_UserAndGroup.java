@@ -16,7 +16,7 @@ public class Presenter_UserAndGroup {
     private ArrayList<Object_User> users = new ArrayList<>();
     private FirebaseError mError = null;
 
-    private View_list_fragment view;
+    private View_fragment view;
     private Model_UserAndGroup model;
 
     public Presenter_UserAndGroup(Context mContext, String self_uid) {
@@ -25,6 +25,7 @@ public class Presenter_UserAndGroup {
     }
 
     public void prepareUser(){
+
         model.getUsrList(self_uid, new Model_UserAndGroup.usrListCallback() {
             @Override
             public void onSuccess(ArrayList<Object_User> usrList, String self_name) {
@@ -41,7 +42,7 @@ public class Presenter_UserAndGroup {
         });
     }
 
-    public void onTakeView(View_list_fragment view){
+    public void onTakeView(View_fragment view){
         this.view = view;
         publish();
     }

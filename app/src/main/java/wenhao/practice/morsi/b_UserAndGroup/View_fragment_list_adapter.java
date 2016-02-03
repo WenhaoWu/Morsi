@@ -18,19 +18,19 @@ import wenhao.practice.morsi.c_Conversation.View_Activity_Conversation;
 /**
  * Created by wenhaowu on 18/01/16.
  */
-public class View_list_adapter extends RecyclerView.Adapter<View_list_adapter.mViewHolder>{
+public class View_fragment_list_adapter extends RecyclerView.Adapter<View_fragment_list_adapter.mViewHolder>{
 
     private ArrayList<Object_User> usrList;
     private Context mContext;
     private String self_name;
 
-    public View_list_adapter(ArrayList<Object_User> usrList, Context mContext, String self_name) {
+    public View_fragment_list_adapter(ArrayList<Object_User> usrList, Context mContext, String self_name) {
         this.usrList = usrList;
         this.mContext = mContext;
         this.self_name = self_name;
     }
 
-    public View_list_adapter( Context mContext) {
+    public View_fragment_list_adapter(Context mContext) {
         this.usrList = new ArrayList<>();
         this.self_name = null;
         this.mContext = mContext;

@@ -20,7 +20,7 @@ import android.widget.Toast;
 import wenhao.practice.morsi.R;
 import wenhao.practice.morsi.a_loginAndRegi.Activity_Login;
 
-public class View_ug_activity_main extends AppCompatActivity
+public class View_activity_main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String TAG_UID = "tag_UID";
@@ -62,7 +62,8 @@ public class View_ug_activity_main extends AppCompatActivity
         });
         */
 
-        View_ug_adapter_viewpager viewpagerAdapter = new View_ug_adapter_viewpager(getSupportFragmentManager());
+        View_adapter_viewpager viewpagerAdapter = new View_adapter_viewpager(getSupportFragmentManager());
+        viewpagerAdapter.setSelf_uid(self_uid);
 
         ViewPager vp = (ViewPager)findViewById(R.id.UG_viewpager);
         vp.setOffscreenPageLimit(viewpagerAdapter.getCount() - 1);

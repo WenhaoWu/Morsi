@@ -21,7 +21,7 @@ import java.util.Random;
 import wenhao.practice.morsi.Constant_ApplicationConstant;
 import wenhao.practice.morsi.b_UserAndGroup.Object_User;
 import wenhao.practice.morsi.R;
-import wenhao.practice.morsi.b_UserAndGroup.View_ug_activity_main;
+import wenhao.practice.morsi.b_UserAndGroup.View_activity_main;
 
 public class Activity_Register extends AppCompatActivity {
 
@@ -134,8 +134,8 @@ public class Activity_Register extends AppCompatActivity {
 
     private void goToUserList(String uid) {
         Intent intent = new Intent();
-        intent.putExtra(View_ug_activity_main.TAG_UID, uid);
-        intent.setClass(getBaseContext(),View_ug_activity_main.class);
+        intent.putExtra(View_activity_main.TAG_UID, uid);
+        intent.setClass(getBaseContext(),View_activity_main.class);
         startActivity(intent);
     }
 

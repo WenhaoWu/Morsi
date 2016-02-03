@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 /**
  * Created by wenhaowu on 01/02/16.
  */
-public class View_ug_adapter_viewpager extends FragmentPagerAdapter {
+public class View_adapter_viewpager extends FragmentPagerAdapter {
 
     private String self_uid;
 
@@ -15,7 +15,7 @@ public class View_ug_adapter_viewpager extends FragmentPagerAdapter {
 
     private String tabTitles[] = new String[]{"User","Group"};
 
-    public View_ug_adapter_viewpager(FragmentManager fm) {
+    public View_adapter_viewpager(FragmentManager fm) {
         super(fm);
     }
 
@@ -27,11 +27,11 @@ public class View_ug_adapter_viewpager extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return View_list_fragment.newInstance(0, self_uid);
+                return View_fragment.newInstance(0, self_uid);
             case 1:
-                return View_list_fragment.newInstance(1, self_uid);
+                return View_fragment.newInstance(1, self_uid);
             default:
-                return View_list_fragment.newInstance(0, self_uid);
+                return View_fragment.newInstance(0, self_uid);
         }
     }
 

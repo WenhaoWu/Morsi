@@ -28,7 +28,7 @@
             android:label="@string/title_activity_activity__register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".b_UserAndGroup.View_ug_activity_main"
+            android:name=".b_UserAndGroup.View_activity_main"
             android:label="@string/title_activity_activity__all_user_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".c_Conversation.View_Activity_Conversation"></activity>

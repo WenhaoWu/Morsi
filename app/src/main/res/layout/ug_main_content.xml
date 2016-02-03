@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".b_UserAndGroup.View_ug_activity_main"
+    tools:context=".b_UserAndGroup.View_activity_main"
     tools:showIn="@layout/ug_activity_app_bar_"
     android:orientation="vertical"
 

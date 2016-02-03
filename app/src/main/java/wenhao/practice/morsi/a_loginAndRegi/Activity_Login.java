@@ -39,7 +39,7 @@ import java.util.List;
 
 import wenhao.practice.morsi.Constant_ApplicationConstant;
 import wenhao.practice.morsi.R;
-import wenhao.practice.morsi.b_UserAndGroup.View_ug_activity_main;
+import wenhao.practice.morsi.b_UserAndGroup.View_activity_main;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -330,8 +330,8 @@ public class Activity_Login extends AppCompatActivity implements LoaderCallbacks
 
     public void goToUserList(String uid) {
         Intent intent = new Intent();
-        intent.putExtra(View_ug_activity_main.TAG_UID, uid);
-        intent.setClass(getBaseContext(),View_ug_activity_main.class);
+        intent.putExtra(View_activity_main.TAG_UID, uid);
+        intent.setClass(getBaseContext(),View_activity_main.class);
         startActivity(intent);
     }
 }
