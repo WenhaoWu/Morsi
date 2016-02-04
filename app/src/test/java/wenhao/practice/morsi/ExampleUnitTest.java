@@ -1,4 +1,4 @@
-package wenhao.practice.morsi;
+package my.awesome.morsi;
 
 import org.junit.Test;
 

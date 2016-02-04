@@ -1,4 +1,4 @@
-package wenhao.practice.morsi;
+package my.awesome.morsi;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
