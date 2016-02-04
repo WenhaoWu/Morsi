@@ -32,7 +32,6 @@ public class Model_UserAndGroup {
         void onSuccess(ArrayList<Object_User> usrList, String self_name, String self_avatar);
         void onFail(FirebaseError error);
     }
-
     public void getUsrList(final String self_uid, final usrListCallback callback) {
         final ProgressDialog pd = createProgressDialog(mContext);
         pd.show();
@@ -74,6 +73,7 @@ public class Model_UserAndGroup {
         });
 
     }
+
 
     public static ProgressDialog createProgressDialog(Context mContext){
         ProgressDialog result = new ProgressDialog(mContext);

@@ -6,6 +6,4 @@ package my.awesome.morsi;
 public class Constant_ApplicationConstant {
     public final static String FirebaseURL=
             "YOUR_FIREBASE_ROOT_REF";
-
-
 }
